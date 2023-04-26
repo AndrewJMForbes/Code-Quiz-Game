@@ -1,8 +1,6 @@
 let questionIndex = 0;
 let answersIndex = 0;
-const answerArray = [];
-
-
+const answerArray = "";
 
 function onStart() {
   console.log("clicked on start");
@@ -15,12 +13,12 @@ function onStart() {
   loadQuestion();
 }
 function getResponse() {
-  const optionAEl = document.getElementById('answerA');
-  const optionBEl = document.getElementById('answerB');
-  const optionCEl = document.getElementById('answerC');
-  const optionDEl = document.getElementById('answerD');
-  let response = '';
-  if(optionAEl.checked === true) {
+  const optionAEl = document.getElementById("answerA");
+  const optionBEl = document.getElementById("answerB");
+  const optionCEl = document.getElementById("answerC");
+  const optionDEl = document.getElementById("answerD");
+  let response = "";
+  if (optionAEl.checked === true) {
     response = optionAEl.value;
   } else if (optionBEl.checked === true) {
     response = optionBEl.value;
@@ -32,27 +30,26 @@ function getResponse() {
   return response;
 }
 function onSubmit() {
-  
   // figure out what what was selected
   const result = checkAnswer();
-  console.log('was the answer correct? ', result)
   // store whether they answered correctly
+  for (var i = 0; i < answerArray.length; i++) {
+    result.push(answerArray[i].value);
+  }
   // move onto the next question
   questionIndex++;
   loadQuestion();
 }
 function checkAnswer() {
   const response = getResponse();
-  console.log('user chose ', response);
+  console.log("user chose ", response);
   // what is the right answer
   const correctAnswer = quizQuestions[questionIndex].correctAnswer;
-  console.log('right', correctAnswer);
+  console.log("right", correctAnswer);
 
   // compare whether their answer was correct or not
-  return (response === correctAnswer) 
-    
+  return response === correctAnswer;
 }
-
 function loadQuestion() {
   if (questionIndex < quizQuestions.length) {
     const questionEl = document.getElementById("quiz-question");
@@ -69,34 +66,37 @@ function loadQuestion() {
   } else {
     showResults();
   }
-
 }
 
-function showResults(){
+function showResults() {
   // hide questions
-  const questionContainerEl = document.getElementById('question-container');
-  questionContainerEl.style.display = 'none';
+  const correctAns = document.getElementById('correct');
+  const incorrectAns = document.getElementById('incorrect');
+  const questionContainerEl = document.getElementById("question-container");
+  questionContainerEl.style.display = "none";
   //display results
-  const resultsContainerEl = document.getElementById('results-container');
-  resultsContainerEl.style.display = 'block';
-
-  questionIndex = 0;
+  const resultsContainerEl = document.getElementById("results-container");
+  resultsContainerEl.style.display = "block";
+ 
+}
+function showScore() {
+  
 }
 const quizQuestions = [
   {
     question: "What color is the sky?",
     answers: ["Blue", "Yellow", "Purple", "Green"],
-    correctAnswer: 'A',
+    correctAnswer: "A",
   },
   {
     question: "How many letters are in the word Friday",
     answers: [32, 12, 3, 6],
-    correctAnswer: 'D',
+    correctAnswer: "D",
   },
   {
     question: "What does the H in HTML stand for?",
     answers: ["hardhat", "happy", "hyperbeam", "hyper"],
-    correctAnswer: 'D',
+    correctAnswer: "D",
   },
 ];
 // console.log(quizQuestions);
