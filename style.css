@@ -48,7 +48,9 @@ input[type='radio'] {
   color:black;
   border: none;
 }
-
+#results-container {
+  display: none;
+}
 #start {
   display: flex;
   align-items: center;
