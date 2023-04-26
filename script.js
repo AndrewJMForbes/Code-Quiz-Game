@@ -29,15 +29,28 @@ const welcome = document.getElementById('welcome');
 
 function onSubmit() {
   // figure out what what was selected
+    var rightAnswer = ['0', '3', '3']
+  for (var i = 0; i < quizQuestion.length; i++) {
+    if (rightAnswer == ['0']) {
+      continue;
+    }
+
+  
   // what is the right answer
   // compare whether their answer was correct or not
   // store whether they answered correctly
   // move onto the next question
+
+  function loadQuestion() {;
+
+  }
   questionIndex++;
   loadQuestion();
+  onSubmit();
+}
 }
 
-var quizQuestions = [{
+var quizQuestion = [{
   question:'What color is the sky?',
   answers : ['Blue', 'Yellow', 'Purple', 'Green'],
   correctAnswer: 0
@@ -55,7 +68,7 @@ var quizQuestions = [{
   
 }
 ];
-console.log(quizQuestions);
+// console.log(quizQuestions);
   
 
 answerA.addEventListener('click', function(event){

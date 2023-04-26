@@ -19,17 +19,19 @@
          
         <div id="quiz-question">Question</div>
 
-            <input type="radio" id="answerA" name="answer" value="answerA"></input><label for="answerA" id="answerAlbl">answerA</label>
-            <input type="radio" id="answerB" name="answer" value="answerB"></input><label for="answerB"  id="answerBlbl">answerB</label>
-            <input type="radio" id="answerC" name="answer" value="answerC"></input><label for="answerC" id="answerClbl">answerC</label>
-            <input type="radio" id="answerD" name="answer" value="answerD"></input><label for="answerD" id="answerDlbl">answerD</label>
+            <input type="radio" id="answerA" name="answer" class="QA" value="answerA"></input><label for="answerA" id="answerAlbl">answerA</label>
+            <input type="radio" id="answerB" name="answer" class="QA" value="answerB"></input><label for="answerB"  id="answerBlbl">answerB</label>
+            <input type="radio" id="answerC" name="answer" class="QA" value="answerC"></input><label for="answerC" id="answerClbl">answerC</label>
+            <input type="radio" id="answerD" name="answer" class="QA" value="answerD"></input><label for="answerD" id="answerDlbl">answerD</label>
+
+            <button id="submit" onclick="onSubmit()">Submit Answer</button>
 
       </div>
-
+      
     </div>
     
     <button id ="start" onclick="onStart()">Start the Quiz</button>
-    <button id="submit" onclick="onSubmit()">Submit Answer</button>
+   
 
     <script src="script.js"></script>
 
