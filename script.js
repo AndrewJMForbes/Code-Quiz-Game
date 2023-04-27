@@ -1,5 +1,41 @@
 let questionIndex = 0;
 const resultArray = [];
+const timerContainerEl = document.getElementById("timer-container");
+timerContainerEl.style.display = "none";
+const restartBtn = document.getElementById("restart");
+restartBtn.style.display = "none";
+const timeH = document.getElementById("timer");
+const leaderboard = document.getElementById('leaderboard');
+leaderboard.style.display = 'none';
+
+let timeSecond = 301;
+
+timeH.innerHTML = `00:${timeSecond}`;
+
+const countDown = setInterval(() => {
+	timeSecond--;
+	displayTime(timeSecond);
+	if (timeSecond < 0 || timeSecond < 1) {
+    endTime();
+		clearInterval(countDown);
+	}
+}, 1000);
+
+function displayTime(second) {
+	const min = Math.floor(second / 60);
+	const sec = Math.floor(second % 60);
+	timeH.innerHTML = `${min < 10 ? "0" : ""}${min}:${sec < 10 ? "0" : ""}${sec}`;
+}
+function endTime() {
+  timeH.innerHTML = 'TIMES UP!!';
+  const questionContainer = document.getElementById("question-container");
+	questionContainer.style.display = "none";
+  const restartBtn = document.getElementById("restart");
+  restartBtn.style.display = "block";
+  const startbtn = document.getElementById("start");
+  startbtn.style.display = "none";
+}
+
 /**
  * onStart is a function that begins the quiz by hiding the welcome div and displaying the question-container div
  * that will display a multiple choice question
@@ -11,9 +47,15 @@ function onStart() {
 	welcome.style.display = "none";
 	const questionContainer = document.getElementById("question-container");
 	questionContainer.style.display = "block";
+ 
 	// eventually make its own function
+
 	loadQuestion();
 }
+
+/**
+ * getResponse function
+ */
 function getResponse() {
 	const optionAEl = document.getElementById("answerA");
 	const optionBEl = document.getElementById("answerB");
@@ -52,6 +94,10 @@ function checkAnswer() {
 	return response === correctAnswer;
 }
 function loadQuestion() {
+	const timerContainerEl = document.getElementById("timer-container");
+	timerContainerEl.style.display = "block";
+  const startbtn = document.getElementById("start");
+  startbtn.style.display = "none";
 	if (questionIndex < quizQuestions.length) {
 		const questionEl = document.getElementById("quiz-question");
 		const questionObj = quizQuestions[questionIndex];
@@ -79,9 +125,18 @@ function showResults() {
 	const numberOfCorrectAnswers = calcScore();
 	console.log(numberOfCorrectAnswers);
 	const resultsEl = document.getElementById("results");
-	resultsEl.innerText = `You got ${numberOfCorrectAnswers} correct`;
+	resultsEl.innerText = `You got ${numberOfCorrectAnswers} /10 correct`;
 	const resultsContainerEl = document.getElementById("results-container");
 	resultsContainerEl.style.display = "block";
+  const restartBtn = document.getElementById("restart");
+  restartBtn.style.display = "block";
+  const startbtn = document.getElementById("start");
+  startbtn.style.display = "none";
+  const timerEl = document.getElementById('timer-container');
+  timerEl.style.display = "none";
+  const name = document.getElementById('leaderboard');
+  name.style.display = 'block';
+ 
 }
 function calcScore() {
 	let score = 0;
@@ -93,22 +148,59 @@ function calcScore() {
 
 	return score;
 }
+
+
 const quizQuestions = [
 	{
-		question: "What color is the sky?",
-		answers: ["Blue", "Yellow", "Purple", "Green"],
+		question: "What does == mean in JavaScript?",
+		answers: ["greater than", "less than", "equal to", "not equal to"],
+		correctAnswer: "C",
+	},
+	{
+		question: "What is the operator for strict equality?",
+		answers: ['!==', '=<', '+=', '==='],
+		correctAnswer: "D",
+	},
+	{
+		question: "Which declares a variable in JavaScript?",
+		answers: ["let", "const", "var", "all the above"],
+		correctAnswer: "D",
+	},
+  {
+		question: "Javascript is an _______ language?",
+		answers: ["object-oriented", "object-based", "procedural", "none of the above"],
 		correctAnswer: "A",
 	},
-	{
-		question: "How many letters are in the word Friday",
-		answers: [32, 12, 3, 6],
-		correctAnswer: "D",
+  {
+		question: "Which of the following methods is used to access HTML elements using Javascript?",
+		answers: ["getElementById", "getElementByName", "a and b", "none the above"],
+		correctAnswer: "C",
 	},
-	{
-		question: "What does the H in HTML stand for?",
-		answers: ["hardhat", "happy", "hyperbeam", "hyper"],
-		correctAnswer: "D",
+  {
+		question: "Where are Global variables presented in JavaScript?",
+		answers: ["bottom", "inside a function", "top", "a, b, and c"],
+		correctAnswer: "C",
 	},
+  {
+		question: "Which function use to serialize and object into a JSON string?",
+		answers: ["stringify()", "parse()", "convert()", "none of the above"],
+		correctAnswer: "A",
+	},
+  {
+		question: "How do you write a single line comment in JavaScript?",
+		answers: ["/**", "/*", "//", "*||"],
+		correctAnswer: "C",
+	},
+  {
+		question: "What number do arrays start at?",
+		answers: ["1", "-1", "0", "none of the above"],
+		correctAnswer: "C",
+	},
+  {
+		question: "Which of the following is not a JavaScript framework?",
+		answers: ["Node", "Vue", "React", "cassandra"],
+		correctAnswer: "D",
+	},//https://www.interviewbit.com/javascript-mcq/ used for question suggestions
 ];
 // console.log(quizQuestions);
 

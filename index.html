@@ -13,32 +13,41 @@
    
     <div id="quiz">
 
-      <h2 id="welcome">Welcome are  you ready for the quiz?</h2>
-    
+      <h2 id="welcome">Welcome! Are  you ready? You will have 5 minutes to complete the quiz!</h2>
+
+      <div id="timer-container">
+        <h2 id="timer">Time remaining</h2>
+        <p id="timer-display"></p>
+      </div>
+
       <div id="question-container">
          
         <div id="quiz-question">Question</div>
 
-            <input type="radio" id="answerA" name="answer" class="QA" value="A"></input><label for="answerA" id="answerAlbl">answerA</label>
-            <input type="radio" id="answerB" name="answer" class="QA" value="B"></input><label for="answerB"  id="answerBlbl">answerB</label>
-            <input type="radio" id="answerC" name="answer" class="QA" value="C"></input><label for="answerC" id="answerClbl">answerC</label>
-            <input type="radio" id="answerD" name="answer" class="QA" value="D"></input><label for="answerD" id="answerDlbl">answerD</label>
+            <input type="radio" id="answerA" name="answer" class="QA" value="A" ></input><label for="answerA" id="answerAlbl" disabled>answerA</label>
+            <input type="radio" id="answerB" name="answer" class="QA" value="B" ></input><label for="answerB"  id="answerBlbl" disabled>answerB</label>
+            <input type="radio" id="answerC" name="answer" class="QA" value="C" ></input><label for="answerC" id="answerClbl" disabled>answerC</label>
+            <input type="radio" id="answerD" name="answer" class="QA" value="D" ></input><label for="answerD" id="answerDlbl" disabled>answerD</label>
 
             <button id="submit" onclick="onSubmit()" value="submit">Submit Answer</button>
 
       </div>
       <div id="results-container" >
 
-        <div id="results">
-        </div>
+        <div id="results"></div>
+       
+        
 
+      </div>
+      <div id="leaderboard">
+        <div id="name">Name here</div>
       </div>
       
     </div>
-    
+    <div class="buttons">
     <button id ="start" onclick="onStart()">Start the Quiz</button>
-   
-
+    <button id="restart">Try again?</button>
+  </div>
     <script src="script.js"></script>
 
 </body>
