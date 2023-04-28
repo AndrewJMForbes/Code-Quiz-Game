@@ -158,3 +158,11 @@ vertical-align: middle;
   border: 5px inset rgb(139, 105, 19);
   box-shadow: 4px 4px 10px goldenrod;
 }
+#name {
+  border: 5px inset rgb(139, 105, 19);
+  box-shadow: 4px 4px 10px goldenrod;
+}
+#submit-name {
+  border: 5px inset rgb(139, 105, 19);
+  box-shadow: 4px 4px 10px goldenrod;
+}

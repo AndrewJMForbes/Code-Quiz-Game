@@ -86,7 +86,42 @@ function onSubmit() {
 	questionIndex++;
 	loadQuestion();
 }
-
+function onSubmitName(data) {
+	 const submitForm = document.getElementById('leaderboard');
+	 const submitInput = document.getElementById('name');
+	 const submit = document.getElementById('submit-name');
+	 const names = document.getElementById('names');
+	
+	 const nameStorage = localStorage.getItem('name')
+	 ? JSON.parse(localStorage.getItem('names'))
+	 : [];
+	
+	 submitForm.addEventListener('submit', (e) => {
+		e.preventDefault();
+		nameStorage.push(submitInput.value);
+		localStorage.setItem('names', JSON.stringify(nameStorage));
+		listBuilder(submitInput.value);
+		submitInput.value = '';
+	 });
+	 const listBuilder = (text) => {
+		const note =document.createElement('li');
+		names.innerHTML = text;
+		names.appendChild(note);
+	 };
+	 const getNotes = JSON.parse(localStorage.getItem("names"));
+getNotes.forEach((note) => {
+  listBuilder(note);
+});
+// const deleteNote = (btn) => {
+//   const el = btn.parentNode;
+//   const index = [...el.parentElement.children].indexOf(el);
+//   notesStorage.splice(index, 1);
+//   localStorage.setItem("names", JSON.stringify(notesStorage));
+//   el.remove();
+// };
+return;
+}
+onSubmitName();
 function checkAnswer() {
 	const response = getResponse();
 	console.log("user chose ", response);
