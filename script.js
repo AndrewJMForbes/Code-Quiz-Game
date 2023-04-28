@@ -5,13 +5,16 @@ timerContainerEl.style.display = "none";
 const restartBtn = document.getElementById("restart");
 restartBtn.style.display = "none";
 const timeH = document.getElementById("timer");
-const leaderboard = document.getElementById('leaderboard');
+const displayScores = document.getElementById('leaderboard');
 leaderboard.style.display = 'none';
 
 let timeSecond = 301;
 
 timeH.innerHTML = `00:${timeSecond}`;
-
+function startTime() {
+	const setClock = setTimeout;
+	timeH.innerHTML = `${min < 10 ? "0" : ""}${min}:${sec < 10 ? "0" : ""}${sec}`;
+}
 const countDown = setInterval(() => {
 	timeSecond--;
 	displayTime(timeSecond);
@@ -34,6 +37,7 @@ function endTime() {
   restartBtn.style.display = "block";
   const startbtn = document.getElementById("start");
   startbtn.style.display = "none";
+
 }
 
 /**
@@ -43,8 +47,8 @@ function endTime() {
 function onStart() {
 	console.log("clicked on start");
 
-	const welcome = document.getElementById("welcome");
-	welcome.style.display = "none";
+	const introEl = document.getElementById("welcome");
+	introEl.style.display = "none";
 	const questionContainer = document.getElementById("question-container");
 	questionContainer.style.display = "block";
  
@@ -117,8 +121,6 @@ function loadQuestion() {
 
 function showResults() {
 	// hide questions
-	const correctAns = document.getElementById("correct");
-	const incorrectAns = document.getElementById("incorrect");
 	const questionContainerEl = document.getElementById("question-container");
 	questionContainerEl.style.display = "none";
 	//display results
@@ -134,8 +136,8 @@ function showResults() {
   startbtn.style.display = "none";
   const timerEl = document.getElementById('timer-container');
   timerEl.style.display = "none";
-  const name = document.getElementById('leaderboard');
-  name.style.display = 'block';
+  const nameEl = document.getElementById('leaderboard');
+  nameEl.style.display = 'block';
  
 }
 function calcScore() {
@@ -202,26 +204,3 @@ const quizQuestions = [
 		correctAnswer: "D",
 	},//https://www.interviewbit.com/javascript-mcq/ used for question suggestions
 ];
-// console.log(quizQuestions);
-
-// answerA.addEventListener("click", function (event) {
-//   event.preventDefault;
-//   console.log("#answerA");
-// });
-// answerB.addEventListener("click", function (event) {
-//   event.preventDefault;
-//   console.log("#answerB");
-// });
-// answerC.addEventListener("click", function (event) {
-//   event.preventDefault;
-//   console.log("#answerC");
-// });
-// answerD.addEventListener("click", function (event) {
-//   event.preventDefault;
-//   console.log("#answerD");
-// });
-// startGame.addEventListener("click", function (event) {
-//   event.preventDefault;
-
-//   console.log(start);
-// });
