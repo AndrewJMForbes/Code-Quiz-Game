@@ -2,7 +2,7 @@
 
 ## Designing a page that holds a multiple choice JavaScript quiz
 
-This application was made using HTML, CSS, and JavaScript. My application was made as a studying tool as well as a game to test someone's knowledge of Javascript. The page includes a game timer of 5 minute and a leaderboard for high scores eventually.  
+This application was made using HTML, CSS, and JavaScript. My application was made as a studying tool as well as a game to test someone's knowledge of Javascript. The page includes a game timer of 5 minute and a leaderboard for high scores eventually. It includes 10 multiple choice questions with a page at the end after answering all the questions to tell you the amount of correct answers.   
 
 
 ## Installation
