@@ -96,7 +96,7 @@ function onSubmitName(data) {
 	 ? JSON.parse(localStorage.getItem('names'))
 	 : [];
 	
-	 submitForm.addEventListener('submit', (e) => {
+	 submitForm.addEventListener('submit-name', (e) => {
 		e.preventDefault();
 		nameStorage.push(submitInput.value);
 		localStorage.setItem('names', JSON.stringify(nameStorage));
@@ -121,7 +121,7 @@ getNotes.forEach((note) => {
 // };
 return;
 }
-onSubmitName();
+// onSubmitName();
 function checkAnswer() {
 	const response = getResponse();
 	console.log("user chose ", response);
